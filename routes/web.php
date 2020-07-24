@@ -13,15 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/','FrontProductController@index');
+Route::get('/product/{id}','FrontProductController@show')->name('product.view');
+Route::get('/category/{name}','FrontProductController@allProduct')->name('product.list');
+Route::get('/addToCart/{product}','CartController@addToCart')->name('add.cart');
 Auth::routes();
 
+Route::get('subcategories/{id}', 'ProductController@loadSubCategories');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix'=>'auth','middleware'=>['auth','isAdmin']],
 function(){
@@ -29,7 +30,6 @@ function(){
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
-    Route::get('subcategories/{id}', 'ProductController@loadSubCategories');
     Route::resource('category','CategoryController');
     Route::resource('subcategory','SubcategoryController');
     Route::resource('product','ProductController');
