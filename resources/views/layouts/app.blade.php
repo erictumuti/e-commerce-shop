@@ -43,14 +43,20 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        @if(Auth::check())
                         <li class="nav-link">
-                        <a href="#">
+                        <a href="{{route('cart.show')}}">
                             <span class="fas fa-shopping-cart">
                               ({{session()->has('cart')?session()->get('cart')->totalQty:'0'}})
                         </span>
                         </a>
                         </li>
-
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{route('order')}}">
+                         Order
+                         </a>
+                        </li>
+                         @endif
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}"><button class="btn btn-primary">{{ __('Login') }}</button></a>
