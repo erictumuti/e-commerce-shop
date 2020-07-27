@@ -13,6 +13,10 @@
 		</div>
 	</form>
 	<br>
+	<div>
+		<a href="{{route('more.product')}}"><button class="btn btn-secondary">back</button></a>
+	</div>
+	<br>
 <div class="row">
 		  @foreach($products as $product)
         <div class="col-md-4">

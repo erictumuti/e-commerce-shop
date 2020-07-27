@@ -15504,3 +15504,7 @@ a.text-dark:focus {
   }
 }
 
+nav .front {
+  background: blue;
+}
+
